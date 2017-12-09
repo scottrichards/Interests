@@ -9,10 +9,9 @@
 import UIKit
 
 class GDRestApi: NSObject {
-    static let singleton = GDRestApi()
     
     // Do a GET call and return corresponding JSON object
-    func getJson(endpoint : String, params : [String : String]?, completion : @escaping (Any) -> Void, errorHandler : @escaping (Error?) -> Void) {
+    static func getJson(endpoint : String, params : [String : String]?, completion : @escaping (Any) -> Void, errorHandler : @escaping (Error?) -> Void) {
         guard var url = URL(string: endpoint) else {
             print("ERRROR: Cannot create url")
             return

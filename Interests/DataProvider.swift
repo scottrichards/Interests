@@ -16,7 +16,7 @@ class DataProvider: NSObject {
     static let singleton = DataProvider()
     
     func loadBlogs(completion : @escaping ([CardData]) -> Void, errorHandler : @escaping (Error?) -> Void) {
-        GDRestApi.singleton.getJson(endpoint: APIEndpoints.BlogPosts,
+        GDRestApi.getJson(endpoint: APIEndpoints.BlogPosts,
                           params: nil,
                           completion: { (jsonObject) in
                             if let dictionary = jsonObject as? [String: Any] {
