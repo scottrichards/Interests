@@ -26,6 +26,8 @@ struct BlogPost {
             }
 
         }
-        
+        if let featuredImageUrl = json["featured_image_url"] as? String {
+            self.imageUrl = featuredImageUrl
+        }
     }
 }

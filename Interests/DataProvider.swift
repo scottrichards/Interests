@@ -9,15 +9,16 @@
 import UIKit
 
 struct APIEndpoints {
-    static let BlogPosts = "https://stage.glassdoor.com/blog/wp-json/wp/v2/posts/"
+    static let BlogPostsStage = "https://stage.glassdoor.com/blog/wp-json/wp/v2/posts/"
+    static let BlogPostsProd = "https://blog-content.glassdoor.com/site-us/wp-json/wp/v2/posts/"
 }
 
 class DataProvider: NSObject {
     static let singleton = DataProvider()
     
-    func loadBlogs(completion : @escaping ([CardData]) -> Void, errorHandler : @escaping (Error?) -> Void) {
-        GDRestApi.getJson(endpoint: APIEndpoints.BlogPosts,
-                          params: nil,
+    func loadBlogs(params : [String : String]?, completion : @escaping ([CardData]) -> Void, errorHandler : @escaping (Error?) -> Void) {
+        GDRestApi.getJson(endpoint: APIEndpoints.BlogPostsProd,
+                          params: params,
                           completion: { (jsonObject) in
                             if let dictionary = jsonObject as? [String: Any] {
                                 print("dictionary: \(dictionary)")

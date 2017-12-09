@@ -18,11 +18,12 @@ class ViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataProvider.singleton.loadBlogs(completion: { (cardData) in
+        let params = ["per_page" : "5"]
+        DataProvider.singleton.loadBlogs(params: params, completion: { (cardData) in
             self.dataSource = cardData
             self.collectionView.reloadData()
         }) { (error) in
-            print("error")
+            print("Error loading Feed: \(error.debugDescription)")
         }
         // Do any additional setup after loading the view, typically from a nib.
     }

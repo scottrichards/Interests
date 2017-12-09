@@ -31,6 +31,9 @@ class GDRestApi: NSObject {
         }
         let urlRequest = URLRequest(url : url)
         let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 20.0
+        config.timeoutIntervalForResource = 30.0
+
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             // check for errors
